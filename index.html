@@ -719,82 +719,157 @@
       <!-- /Testimonials Section -->
     </section>
 
-      <!-- Contact Section -->
-      <section id="contact" class="contact section">
+    <!-- Contact Section -->
+<section id="contact" class="contact section">
+  <style>
+    
+  </style>
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Contact</h2>
-          <p>Feel free to reach out for questions, partnerships, or discussions!</p>
-        </div><!-- End Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Feel free to reach out for questions, partnerships, or discussions!</p>
+  </div>
 
-        <div class="container" data-aos="fade" data-aos-delay="100">
+  <!-- Alert Banners -->
+  <div class="container mb-4">
+    <div class="alert alert-loading" id="loadingAlert">
+      <span class="alert-icon">
+        <svg class="loading-spinner" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-dasharray="32" stroke-dashoffset="32"/>
+        </svg>
+      </span>
+      Sending your message...
+    </div>
 
-          <div class="row gy-4">
+    <div class="alert alert-success" id="successAlert">
+      <span class="alert-icon">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>
+      </span>
+      Your message has been sent successfully! Thank you for contacting me!
+    </div>
 
-            <div class="col-lg-4">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Location</h3>
-                  <p>Rome, Italy</p>
-                </div>
-              </div><!-- End Info Item -->
+    <div class="alert alert-error" id="errorAlert">
+      <span class="alert-icon">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+        </svg>
+      </span>
+      <span id="errorMessage">There was an error sending your message. Please try again.</span>
+    </div>
+  </div>
 
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email</h3>
-                  <p>claudio.schiavella@uniroma1.it</p>
-                </div>
-              </div><!-- End Info Item -->
-
-            </div>
-
-            <div class="col-lg-8">
-              <form action="forms/contact.php" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-                <div class="row gy-4">
-
-                  <div class="col-md-6">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                  </div>
-
-                  <div class="col-md-6 ">
-                    <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                  </div>
-
-                  <div class="col-md-12">
-                    <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                  </div>
-
-                  <div class="col-md-12">
-                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                  </div>
-
-                  <div class="col-md-12 text-center">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                    <button type="submit">Send Message</button>
-                  </div>
-
-                </div>
-              </form>
-            </div><!-- End Contact Form -->
-
+  <div class="container" data-aos="fade" data-aos-delay="100">
+    <div class="row gy-4">
+      <div class="col-lg-4">
+        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+          <i class="bi bi-geo-alt flex-shrink-0"></i>
+          <div>
+            <h3>Location</h3>
+            <p>Rome, Italy</p>
           </div>
-
         </div>
 
-      </section><!-- /Contact Section -->
+        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+          <i class="bi bi-envelope flex-shrink-0"></i>
+          <div>
+            <h3>Email</h3>
+            <p>claudio.schiavella@uniroma1.it</p>
+          </div>
+        </div>
+      </div>
 
+      <div class="col-lg-8">
+        <form action="https://formspree.io/f/movqeryd" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+          <div class="row gy-4">
+            <div class="col-md-6">
+              <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+            </div>
+
+            <div class="col-md-6">
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+            </div>
+
+            <div class="col-md-12">
+              <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+            </div>
+
+            <div class="col-md-12">
+              <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+            </div>
+
+            <div class="col-md-12 text-center">
+              <button type="submit">Send Message</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelector('.php-email-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const form = this;
+  const loadingAlert = document.getElementById('loadingAlert');
+  const successAlert = document.getElementById('successAlert');
+  const errorAlert = document.getElementById('errorAlert');
+  const errorMessage = document.getElementById('errorMessage');
+  
+  // Hide all alerts initially
+  const hideAllAlerts = () => {
+    loadingAlert.style.display = 'none';
+    successAlert.style.display = 'none';
+    errorAlert.style.display = 'none';
+  };
+  
+  // Show loading state
+  hideAllAlerts();
+  loadingAlert.style.display = 'block';
+  
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    const result = await response.json();
+    
+    hideAllAlerts();
+    
+    if (response.ok) {
+      // Show success message
+      successAlert.style.display = 'block';
+      form.reset();
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        successAlert.style.display = 'none';
+      }, 5000);
+    } else {
+      // Show error from server
+      errorMessage.textContent = result.error || 'Form submission failed';
+      errorAlert.style.display = 'block';
+    }
+  } catch (error) {
+    hideAllAlerts();
+    errorMessage.textContent = 'There was an error sending your message. Please try again.';
+    errorAlert.style.display = 'block';
+    }
+  });
+  </script>
   </main>
 
   <footer id="footer" class="footer position-relative light-background">
     <div class="container">
       <h3 class="sitename">Claudio Schiavella</h3>
-      <p>The honor belongs to the man in the arena.</p>
+      <p>The honor belongs to the man in the arena</p>
       <div class="social-links d-flex justify-content-center">
         <a href="https://www.linkedin.com/in/claudio-schiavella/" target="_blank"><i class="bi bi-linkedin"></i></a>
         <a href="https://x.com/ClaSchiavella21" target="_blank"><i class="bi bi-twitter-x"></i></a>

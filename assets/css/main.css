@@ -1458,3 +1458,46 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+.alert {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.375rem;
+  display: none;
+}
+
+.alert-success {
+  background-color: #def7ec;
+  border: 1px solid #31c48d;
+  color: #03543f;
+}
+
+.alert-error {
+  background-color: #fde8e8;
+  border: 1px solid #f98080;
+  color: #9b1c1c;
+}
+
+.alert-loading {
+  background-color: #e1effe;
+  border: 1px solid #3f83f8;
+  color: #1e429f;
+}
+
+.alert-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
