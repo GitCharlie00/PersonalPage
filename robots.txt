@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gitcharlie00.github.io/PersonalPage/sitemap.xml
