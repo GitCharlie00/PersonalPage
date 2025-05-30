@@ -23,6 +23,7 @@
   --default-color: #272829; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #45505b; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #0563bb; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --borderline-color: #9ccfff; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
@@ -1500,4 +1501,147 @@ section,
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Container wrapper per gestire overflow e scroll */
+.news-container {
+    position: relative;
+    max-height: 480px;
+    overflow: hidden; /* Nasconde il contenuto che esce */
+    border-radius: 12px;
+    /* Aggiungi padding per permettere alle card di "volare" */
+    padding: 20px 0;
+    margin: -20px 0; /* Compensa il padding */
+}
+
+.news-scrollable-grid {
+    max-height: 440px; /* Leggermente meno del container */
+    overflow-y: auto;
+    overflow-x: visible; /* Permette alle card di uscire orizzontalmente */
+    padding: 20px 10px 20px 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    isolation: isolate;
+    
+    /* Scrollbar personalizzata */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.2) transparent;
+}
+
+/* Webkit scrollbar per Chrome/Safari */
+.news-scrollable-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.news-scrollable-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.news-scrollable-grid::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+.news-scrollable-grid::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.news-card {
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid transparent;
+    border-color: var(--accent-color);
+    position: relative;
+    will-change: transform;
+    min-width: 220px;
+    max-width: 280px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+/* Effetto hover mantenuto */
+.news-card:hover,
+.news-card:focus {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    border-color: var(--borderline-color);
+    outline: none;
+    z-index: 9999;
+}
+
+.news-card h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--heading-color);
+}
+
+.news-card p {
+    font-size: 14px;
+    color: var(--default-color);
+    flex-grow: 1;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.news-card small {
+    font-size: 12px;
+    color: color-mix(in srgb, var(--default-color), transparent 60%);
+    text-align: right;
+}
+
+/* Alternativa: se vuoi un effetto ancora più drammatico */
+@media (min-width: 768px) {
+    .news-card:hover {
+        transform: translateY(-12px) scale(1.02);
+    }
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--surface-color);
+  border-radius: 12px;
+  padding: 30px 25px;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 50%);
 }

@@ -226,4 +226,52 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('newsModal');
+  const modalTitle = modal.querySelector('#modalTitle');
+  const modalDesc = modal.querySelector('#modalDesc');
+  const modalCloseBtn = modal.querySelector('.modal-close');
+
+  // Seleziona tutte le news-card
+  const newsCards = document.querySelectorAll('.news-card');
+
+  newsCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const title = card.querySelector('h3').textContent;
+      const shortDesc = card.querySelector('p').textContent;
+      const detailedDesc = card.getAttribute('data-details') || shortDesc;
+
+      modalTitle.textContent = title;
+      modalDesc.innerHTML = detailedDesc;
+
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      modalCloseBtn.focus();
+    });
+  });
+
+  // Chiudi modal
+  modalCloseBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+  });
+
+  // Chiudi modal con ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape" && modal.classList.contains('active')) {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // Chiudi cliccando fuori dal contenuto
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
+});
+
+
 })();
